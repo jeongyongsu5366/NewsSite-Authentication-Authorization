@@ -19,6 +19,14 @@ router.get('/login', (req, res) => {
 	res.render('login', { user: req.user });
 });
 
+router.get('/logout', (req, res) => {
+	res.clearCookie('auth_token', { path: '/' });
+	res.clearCookie('express:sess', { path: '/' });
+	res.clearCookie('express:sess.sig', { path: '/' });
+	req.logout();
+	res.redirect('/');
+});
+
 router.get('/register', (req, res) => {
 	res.render('register');
 });
