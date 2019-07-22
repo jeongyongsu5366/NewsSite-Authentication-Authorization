@@ -22,3 +22,7 @@ router.get('/login', (req, res) => {
 router.get('/register', (req, res) => {
 	res.render('register');
 });
+
+// Auth with google+
+router.get('google', passport.authenticate('google', scope: ['profile', 'email']));
+
