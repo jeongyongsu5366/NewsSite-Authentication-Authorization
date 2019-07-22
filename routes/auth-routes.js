@@ -1,15 +1,15 @@
 const express = require('express');
+const app = express();
+const router = express.Router();
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
+const querystring = require('querystring');
 const { localUser, registerValidation, loginValidation } = require('../models/localUser');
 const dotenv = require('dotenv');
 
 dotenv.config();
-
-const app = express();
-const router = express.Router();
 
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
@@ -31,8 +31,13 @@ router.get('/register', (req, res) => {
 	res.render('register');
 });
 
-// Auth with google+
-router.get('google', passport.authenticate('google', { scope: ['profile', 'email'] }));
+// auth with google+
+router.get(
+	'/google',
+	passport.authenticate('google', {
+		scope: ['profile', 'email']
+	})
+);
 
 // callback route for google to redirect to
 // hand control to passport to use code to grab profile info
@@ -81,8 +86,6 @@ router.post('/login', async (req, res) => {
 	const validPassword = await bcrypt.compare(req.body.password, user.password);
 	if (!validPassword) return res.status(400).send('Invalid Password');
 
-	// Right After validating Password, we're going to res.send jwt
-	// res.send('Logged in'!);
 	const payload = {
 		_id: user._id,
 		isAdmin: user.isAdmin,

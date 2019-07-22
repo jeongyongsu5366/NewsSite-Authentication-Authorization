@@ -13,7 +13,7 @@ const profile = require('./routes/profile-routes');
 
 dotenv.config();
 
-mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true }, () => console.log('Connected to MongoDB!!'));
+mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true }, () => console.log('Connected to DB!'));
 
 app.use(
 	cookieSession({
