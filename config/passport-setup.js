@@ -5,6 +5,16 @@ const googleUser = require('../models/googleUser');
 
 dotenv.config();
 
+passport.serializeUser((user, done) => {
+	done(null, user.id);
+});
+
+passport.deserializeUser((id, done) => {
+	googleUser.findById(id).then(user => {
+		done(null, user);
+	});
+});
+
 passport.use(
 	new GoogleStrategy(
 		{
