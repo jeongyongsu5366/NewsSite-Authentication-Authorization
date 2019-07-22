@@ -85,3 +85,5 @@ router.post('/login', async (req, res) => {
 	console.log(user);
 	res.status(200).render('homepage', { user: user });
 });
+
+module.exports = router;
