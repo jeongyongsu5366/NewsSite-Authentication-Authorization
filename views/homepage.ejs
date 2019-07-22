@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<% include homepageHeader %>
+		<title>HomePage</title>
+	</head>
+	<body>
+		<div class="topnav" id="myTopnav">
+			<a href="/" class="active"><i class="fas fa-igloo"></i> Home</a>
+			<a href="#stories"><i class="fas fa-sun"></i> Stories</a>
+			<a href="/profile"><i class="fas fa-info-circle"></i>Profile</a>
+
+			<% if (user) { %>
+			<a href="/auth/logout"><i class="fas fa-sign-in-alt"></i>Logout</a>
+			<% } else { %>
+			<a href="/auth/login"><i class="fas fa-sign-in-alt"></i>Login</a>
+			<% } %>
+			<a href="javascript:void(0);" class="icon" onclick="myFunction()">
+				<i class="fas fa-hamburger"></i>
+			</a>
+		</div>
+		<% include carousel %> <% include homepageBody %>
+	</body>
+</html>

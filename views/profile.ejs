@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<% include profileHeader %>
+	</head>
+	<body>
+		<div class="topnav" id="myTopnav">
+			<a href="/" class="active"><i class="fas fa-igloo"></i> Home</a>
+			<a href="#stories"><i class="fas fa-sun"></i> Stories</a>
+			<a href="/profile"><i class="fas fa-info-circle"></i>Profile</a>
+			<% if (user) { %>
+			<a href="/auth/logout"><i class="fas fa-sign-in-alt"></i>Logout</a>
+			<% } else { %>
+			<a href="/auth/login"><i class="fas fa-sign-in-alt"></i>Login</a>
+			<% } %>
+			<a href="javascript:void(0);" class="icon" onclick="myFunction()">
+				<i class="fas fa-hamburger"></i>
+			</a>
+		</div>
+		<h1>Welcome to your profile, <%= user.email || user.username %></h1>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 m-auto">
+					<h3 class="text-center display-4 my-4">File Uploads</h3>
+					<form action="/profile" method="POST" enctype="multipart/form-data">
+						<div class="custom-file mb-3">
+							<input type="file" name="file" id="file" class="custom-file-input" />
+							<label for="file" class="custom-file-label">Choose File</label>
+						</div>
+						<input type="submit" value="submit" class="btn btn-primary btn-block" />
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
