@@ -18,3 +18,7 @@ app.use(express.json());
 router.get('/login', (req, res) => {
 	res.render('login', { user: req.user });
 });
+
+router.get('/register', (req, res) => {
+	res.render('register');
+});
