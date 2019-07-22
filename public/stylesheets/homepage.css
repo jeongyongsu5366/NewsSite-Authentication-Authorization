@@ -1,0 +1,90 @@
+body {
+	margin: 0;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.topnav {
+	overflow: hidden;
+	background-color: #040404;
+}
+
+.topnav a {
+	float: left;
+	text-decoration: none;
+	display: block;
+	color: #9e9e9e;
+	padding: 20px 30px;
+	text-align: center;
+	font-size: 20px;
+}
+
+.topnav a:hover {
+	background-color: #c5050c;
+	color: black;
+}
+
+.topnav a.active {
+	color: white;
+}
+
+.topnav .icon {
+	display: none;
+	background-color: white;
+	color: white;
+}
+
+@media screen and (max-width: 600px) {
+	.topnav a:not(:first-child) {
+		display: none;
+	}
+	.topnav a.icon {
+		float: right;
+		display: block;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.topnav.responsive {
+		position: relative;
+	}
+	.topnav.responsive .icon {
+		position: absolute;
+		right: 0;
+		top: 0;
+	}
+	.topnav.responsive a {
+		float: none;
+		display: block;
+		text-align: left;
+	}
+}
+
+.cards {
+	margin-top: 5px;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	grid-gap: 20px;
+}
+
+article {
+	position: relative;
+}
+
+.article-img {
+	height: 250px;
+	width: 100%;
+	object-fit: cover;
+}
+
+.article-title {
+	position: absolute;
+	top: 40px;
+	width: 100%;
+	padding: 10px;
+}
+
+.carousel-inner > .carousel-item > img {
+	margin: auto;
+	width: 80%;
+	height: 900px;
+}
